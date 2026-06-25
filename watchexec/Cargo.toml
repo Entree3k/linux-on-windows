@@ -1,0 +1,40 @@
+[workspace]
+resolver = "2"
+members = [
+	"crates/lib",
+	"crates/cli",
+	"crates/events",
+	"crates/signals",
+	"crates/supervisor",
+	"crates/filterer/globset",
+	"crates/filterer/ignore",
+	"crates/bosion",
+	"crates/ignore-files",
+	"crates/project-origins",
+]
+
+[workspace.dependencies]
+rand = "0.9.1"
+uuid = "1.5.0"
+
+[profile.release]
+lto = true
+debug = 1 # for stack traces
+codegen-units = 1
+strip = "symbols"
+
+[profile.dev.build-override]
+opt-level = 0
+codegen-units = 1024
+debug = false
+debug-assertions = false
+overflow-checks = false
+incremental = false
+
+[profile.release.build-override]
+opt-level = 0
+codegen-units = 1024
+debug = false
+debug-assertions = false
+overflow-checks = false
+incremental = false

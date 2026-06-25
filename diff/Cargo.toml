@@ -1,0 +1,18 @@
+[package]
+name = "diff"
+version = "1.0.0"
+edition = "2021"
+
+[[bin]]
+name = "diff"
+path = "src/main.rs"
+
+[dependencies]
+colored = "2"
+similar = "2"
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true
+codegen-units = 1

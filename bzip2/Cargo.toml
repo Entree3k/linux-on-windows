@@ -1,0 +1,19 @@
+[package]
+name = "bzip2"
+version = "1.0.0"
+edition = "2021"
+description = "bzip2 file compression/decompression"
+
+[[bin]]
+name = "bzip2"
+path = "src/main.rs"
+
+[dependencies]
+bzip2   = "0.4"
+colored = "2"
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true
+codegen-units = 1

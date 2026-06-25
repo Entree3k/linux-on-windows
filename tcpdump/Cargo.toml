@@ -1,0 +1,27 @@
+[package]
+name = "tcpdump"
+version = "1.0.0"
+edition = "2021"
+description = "Live packet capture for Windows - raw sockets, pcap output, Wireshark-compatible"
+
+[[bin]]
+name = "tcpdump"
+path = "src/main.rs"
+
+[dependencies]
+ctrlc = "3"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.52", features = [
+    "Win32_Foundation",
+    "Win32_NetworkManagement_IpHelper",
+    "Win32_Networking_WinSock",
+    "Win32_System_Console",
+    "Win32_System_IO",
+] }
+
+[profile.release]
+opt-level     = 3
+lto           = true
+strip         = true
+codegen-units = 1

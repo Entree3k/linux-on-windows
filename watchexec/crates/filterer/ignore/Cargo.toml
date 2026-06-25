@@ -1,0 +1,52 @@
+[package]
+name = "watchexec-filterer-ignore"
+version = "7.0.0"
+
+authors = ["Félix Saparelli <felix@passcod.name>"]
+license = "Apache-2.0"
+description = "Watchexec filterer component for ignore files"
+keywords = ["watchexec", "filterer", "ignore"]
+
+documentation = "https://docs.rs/watchexec-filterer-ignore"
+homepage = "https://watchexec.github.io"
+repository = "https://github.com/watchexec/watchexec"
+readme = "README.md"
+
+rust-version = "1.61.0"
+edition = "2021"
+
+[dependencies]
+ignore = "0.4.18"
+dunce = "1.0.4"
+normalize-path = "0.2.1"
+tracing = "0.1.40"
+
+[dependencies.ignore-files]
+version = "3.0.5"
+path = "../../ignore-files"
+
+[dependencies.watchexec]
+version = "8.2.0"
+path = "../../lib"
+
+[dependencies.watchexec-events]
+version = "6.1.0"
+path = "../../events"
+
+[dev-dependencies.project-origins]
+version = "1.4.2"
+path = "../../project-origins"
+
+[dev-dependencies.tokio]
+version = "1.33.0"
+features = [
+	"fs",
+	"io-std",
+	"rt",
+	"rt-multi-thread",
+	"macros",
+]
+
+[dev-dependencies.tracing-subscriber]
+version = "0.3.6"
+features = ["env-filter"]

@@ -1,0 +1,19 @@
+[package]
+name = "head"
+version = "1.0.0"
+edition = "2021"
+description = "Output the first part of files"
+
+[[bin]]
+name = "head"
+path = "src/main.rs"
+
+[dependencies]
+clap    = { version = "4", features = ["derive"] }
+colored = "2"
+
+[profile.release]
+opt-level     = 3
+lto           = true
+strip         = true
+codegen-units = 1

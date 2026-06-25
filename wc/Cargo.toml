@@ -1,0 +1,19 @@
+[package]
+name = "wc"
+version = "1.0.0"
+edition = "2021"
+description = "Print line, word, and byte counts for files"
+
+[[bin]]
+name = "wc"
+path = "src/main.rs"
+
+[dependencies]
+clap    = { version = "4", features = ["derive"] }
+colored = "2"
+
+[profile.release]
+opt-level     = 3
+lto           = true
+strip         = true
+codegen-units = 1

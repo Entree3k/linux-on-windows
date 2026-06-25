@@ -1,0 +1,21 @@
+[package]
+name = "touch"
+version = "1.0.0"
+edition = "2021"
+description = "Create files or update their timestamps"
+
+[[bin]]
+name = "touch"
+path = "src/main.rs"
+
+[dependencies]
+clap     = { version = "4", features = ["derive"] }
+colored  = "2"
+filetime = "0.2"
+chrono   = { version = "0.4", features = ["clock"] }
+
+[profile.release]
+opt-level     = 3
+lto           = true
+strip         = true
+codegen-units = 1

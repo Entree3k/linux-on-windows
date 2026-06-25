@@ -1,0 +1,14 @@
+[package]
+name = "echo"
+version = "1.0.0"
+edition = "2021"
+
+[[bin]]
+name = "echo"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true
+codegen-units = 1

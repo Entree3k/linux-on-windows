@@ -1,0 +1,26 @@
+[package]
+name = "lsof"
+version = "1.0.0"
+edition = "2021"
+description = "List open files and network connections — Windows port of lsof"
+
+[[bin]]
+name = "lsof"
+path = "src/main.rs"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.52", features = [
+    "Win32_Foundation",
+    "Win32_System_Threading",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_NetworkManagement_IpHelper",
+    "Win32_Networking_WinSock",
+    "Win32_Storage_FileSystem",
+    "Win32_System_LibraryLoader",
+] }
+
+[profile.release]
+opt-level     = 3
+lto           = true
+strip         = true
+codegen-units = 1

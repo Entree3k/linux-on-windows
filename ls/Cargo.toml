@@ -1,0 +1,21 @@
+[package]
+name = "ls"
+version = "1.0.0"
+edition = "2021"
+description = "List directory contents, Linux-style"
+
+[[bin]]
+name = "ls"
+path = "src/main.rs"
+
+[dependencies]
+clap          = { version = "4", features = ["derive"] }
+colored       = "2"
+chrono        = { version = "0.4", features = ["clock"] }
+terminal_size = "0.3"
+
+[profile.release]
+opt-level     = 3
+lto           = true
+strip         = true
+codegen-units = 1

@@ -1,0 +1,19 @@
+[package]
+name = "gzip"
+version = "1.14.0"
+edition = "2021"
+description = "GNU gzip compatible file compression/decompression"
+
+[[bin]]
+name = "gzip"
+path = "src/main.rs"
+
+[dependencies]
+flate2  = "1"
+colored = "2"
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true
+codegen-units = 1

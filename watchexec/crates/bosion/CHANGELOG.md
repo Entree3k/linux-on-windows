@@ -1,0 +1,40 @@
+# Changelog
+
+## Next (YYYY-MM-DD)
+
+## v2.0.0 (2026-01-20)
+
+- Remove `GIT_COMMIT_DESCRIPTION`. In practice this had zero usage, and dropping it means we can stop depending on gix.
+- Deps: remove gix. This drops dependencies from 327 crates to just 6.
+
+## v1.1.3 (2025-05-15)
+
+- Deps: gix 0.72
+
+## v1.1.2 (2025-02-09)
+
+- Deps: gix 0.70
+
+## v1.1.1 (2024-10-14)
+
+- Deps: gix 0.66
+
+## v1.1.0 (2024-05-16)
+
+- Add `git-describe` support (#832, by @lu-zero)
+
+## v1.0.3 (2024-04-20)
+
+- Deps: gix 0.62
+
+## v1.0.2 (2023-11-26)
+
+- Deps: upgrade to gix 0.55
+
+## v1.0.1 (2023-07-02)
+
+- Deps: upgrade to gix 0.44
+
+## v1.0.0 (2023-03-05)
+
+- Initial release.

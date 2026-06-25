@@ -1,0 +1,23 @@
+[package]
+name = "free"
+version = "1.0.0"
+edition = "2021"
+
+[[bin]]
+name = "free"
+path = "src/main.rs"
+
+[dependencies]
+colored = "2"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.52", features = [
+    "Win32_System_SystemInformation",
+    "Win32_Foundation",
+] }
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true
+codegen-units = 1

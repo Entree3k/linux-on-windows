@@ -1,0 +1,55 @@
+name: Build and Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version (e.g. 1.0)"
+        required: true
+        default: "1.0"
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Build every tool
+        shell: bash
+        run: |
+          mkdir -p dist
+          for dir in */; do
+            dir="${dir%/}"
+            [ -f "$dir/Cargo.toml" ] || continue
+            echo "::group::Building $dir"
+            cargo build --release --manifest-path "$dir/Cargo.toml"
+            cp "$dir/target/release/$dir.exe" "dist/$dir.exe"
+            echo "::endgroup::"
+          done
+          echo "Built binaries:"
+          ls -1 dist
+
+      - name: Resolve release tag
+        id: tag
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "tag=v${{ github.event.inputs.version }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          name: ${{ steps.tag.outputs.tag }}
+          files: dist/*.exe
+          generate_release_notes: true

@@ -1,0 +1,20 @@
+[package]
+name = "zip"
+version = "1.0.0"
+edition = "2021"
+description = "Create and manage ZIP archives"
+
+[[bin]]
+name = "zip"
+path = "src/main.rs"
+
+[dependencies]
+zip     = "2"
+walkdir = "2"
+colored = "2"
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true
+codegen-units = 1

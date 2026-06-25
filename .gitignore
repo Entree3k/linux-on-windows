@@ -1,0 +1,12 @@
+# Rust build artifacts (applies to every tool's crate)
+target/
+**/target/
+
+# Backtrace / debug files
+*.pdb
+
+# Editor / OS cruft
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

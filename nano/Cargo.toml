@@ -1,0 +1,18 @@
+[package]
+name = "nano"
+version = "1.0.0"
+edition = "2021"
+description = "A nano inspired terminal text editor"
+
+[[bin]]
+name = "nano"
+path = "src/main.rs"
+
+[dependencies]
+crossterm = "0.28"
+
+[profile.release]
+opt-level     = 3
+lto           = true
+strip         = true
+codegen-units = 1

@@ -1,0 +1,19 @@
+[package]
+name = "unzip"
+version = "1.0.0"
+edition = "2021"
+description = "Extract ZIP archives"
+
+[[bin]]
+name = "unzip"
+path = "src/main.rs"
+
+[dependencies]
+zip     = "2"
+colored = "2"
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true
+codegen-units = 1

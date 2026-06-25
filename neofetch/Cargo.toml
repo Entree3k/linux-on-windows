@@ -1,0 +1,28 @@
+[package]
+name = "neofetch"
+version = "1.0.0"
+edition = "2021"
+description = "A neofetch style system information tool for Windows"
+
+[[bin]]
+name = "neofetch"
+path = "src/main.rs"
+
+[dependencies]
+colored = "2"
+winreg  = "0.52"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.52", features = [
+    "Win32_Foundation",
+    "Win32_System_SystemInformation",
+    "Win32_Storage_FileSystem",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_Graphics_Gdi",
+] }
+
+[profile.release]
+opt-level     = 3
+lto           = true
+strip         = true
+codegen-units = 1

@@ -1,0 +1,17 @@
+[package]
+name = "sort"
+version = "1.0.0"
+edition = "2021"
+
+[[bin]]
+name = "sort"
+path = "src/main.rs"
+
+[dependencies]
+colored = "2"
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true
+codegen-units = 1

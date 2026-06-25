@@ -1,0 +1,23 @@
+[package]
+name = "ss"
+version = "1.0.0"
+edition = "2021"
+description = "Socket statistics - Windows port of ss/netstat with IPv4/IPv6 and process names"
+
+[[bin]]
+name = "ss"
+path = "src/main.rs"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.52", features = [
+    "Win32_Foundation",
+    "Win32_NetworkManagement_IpHelper",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_Console",
+] }
+
+[profile.release]
+opt-level     = 3
+lto           = true
+strip         = true
+codegen-units = 1

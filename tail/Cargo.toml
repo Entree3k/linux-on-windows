@@ -1,0 +1,19 @@
+[package]
+name = "tail"
+version = "1.0.0"
+edition = "2021"
+description = "Output the last part of files, with optional live follow"
+
+[[bin]]
+name = "tail"
+path = "src/main.rs"
+
+[dependencies]
+clap    = { version = "4", features = ["derive"] }
+colored = "2"
+
+[profile.release]
+opt-level     = 3
+lto           = true
+strip         = true
+codegen-units = 1

@@ -1,0 +1,17 @@
+[package]
+name = "icat"
+version = "1.0.0"
+edition = "2021"
+
+[[bin]]
+name = "icat"
+path = "src/main.rs"
+
+[dependencies]
+image = "0.24"
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true
+codegen-units = 1

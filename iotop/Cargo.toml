@@ -1,0 +1,26 @@
+[package]
+name = "iotop"
+version = "1.0.0"
+edition = "2021"
+
+[[bin]]
+name = "iotop"
+path = "src/main.rs"
+
+[dependencies]
+crossterm = "0.28"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.52", features = [
+    "Win32_Foundation",
+    "Win32_System_SystemInformation",
+    "Win32_System_Threading",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_ProcessStatus",
+] }
+
+[profile.release]
+opt-level     = 3
+lto           = true
+strip         = true
+codegen-units = 1

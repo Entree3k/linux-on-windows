@@ -1,0 +1,15 @@
+[package]
+name = "cat"
+version = "1.0.0"
+edition = "2021"
+description = "Concatenate and print files - Windows port of GNU cat"
+
+[[bin]]
+name = "cat"
+path = "src/main.rs"
+
+[profile.release]
+opt-level     = 3
+lto           = true
+strip         = true
+codegen-units = 1

@@ -1,0 +1,82 @@
+[package]
+name = "watchexec"
+version = "8.2.0"
+
+authors = ["Félix Saparelli <felix@passcod.name>", "Matt Green <mattgreenrocks@gmail.com>"]
+license = "Apache-2.0"
+description = "Library to execute commands in response to file modifications"
+keywords = ["watcher", "filesystem", "watchexec"]
+
+documentation = "https://docs.rs/watchexec"
+homepage = "https://watchexec.github.io"
+repository = "https://github.com/watchexec/watchexec"
+readme = "README.md"
+
+rust-version = "1.61.0"
+edition = "2021"
+
+[dependencies]
+async-priority-channel = "0.2.0"
+atomic-take = "1.0.0"
+futures = "0.3.29"
+miette = "7.2.0"
+notify = "8.0.0"
+thiserror = "2.0.11"
+normalize-path = "0.2.0"
+
+[dependencies.watchexec-events]
+version = "6.1.0"
+path = "../events"
+
+[dependencies.watchexec-signals]
+version = "5.0.1"
+path = "../signals"
+
+[dependencies.watchexec-supervisor]
+version = "5.2.0"
+path = "../supervisor"
+
+[dependencies.tokio]
+version = "1.33.0"
+features = [
+	"fs",
+	"io-std",
+	"process",
+	"rt",
+	"rt-multi-thread",
+	"signal",
+	"sync",
+]
+
+[dependencies.tracing]
+version = "0.1.40"
+features = ["log"]
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2.74"
+
+[target.'cfg(windows)'.dependencies.windows-sys]
+version = ">= 0.59.0, < 0.62.0"
+features = ["Win32_System_Console", "Win32_Foundation"]
+
+[dev-dependencies.tracing-subscriber]
+version = "0.3.6"
+features = ["env-filter"]
+
+[target.'cfg(unix)'.dev-dependencies.nix]
+version = "0.31.1"
+features = ["signal"]
+
+[lints.clippy]
+nursery = "warn"
+pedantic = "warn"
+module_name_repetitions = "allow"
+similar_names = "allow"
+cognitive_complexity = "allow"
+too_many_lines = "allow"
+missing_errors_doc = "allow"
+missing_panics_doc = "allow"
+default_trait_access = "allow"
+enum_glob_use = "allow"
+option_if_let_else = "allow"
+blocks_in_conditions = "allow"

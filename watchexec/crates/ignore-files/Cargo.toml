@@ -1,0 +1,62 @@
+[package]
+name = "ignore-files"
+version = "3.0.5"
+
+authors = ["Félix Saparelli <felix@passcod.name>"]
+license = "Apache-2.0"
+description = "Find, parse, and interpret ignore files"
+keywords = ["ignore", "files", "discover", "find"]
+
+documentation = "https://docs.rs/ignore-files"
+repository = "https://github.com/watchexec/watchexec"
+readme = "README.md"
+
+rust-version = "1.70.0"
+edition = "2021"
+
+[dependencies]
+futures = "0.3.29"
+gix-config = "0.50.0"
+ignore = "0.4.18"
+miette = "7.2.0"
+normalize-path = "0.2.1"
+thiserror = "2.0.11"
+tracing = "0.1.40"
+radix_trie = "0.3.0"
+dunce = "1.0.4"
+
+[dependencies.tokio]
+version = "1.33.0"
+default-features = false
+features = [
+	"fs",
+	"macros",
+	"rt",
+]
+
+[dependencies.project-origins]
+version = "1.4.2"
+path = "../project-origins"
+
+[dev-dependencies]
+tracing-subscriber = "0.3.6"
+
+[features]
+default = []
+
+## Don't hide ignore::gitignore::Gitignore Debug impl
+full_debug = []
+
+[lints.clippy]
+nursery = "warn"
+pedantic = "warn"
+module_name_repetitions = "allow"
+similar_names = "allow"
+cognitive_complexity = "allow"
+too_many_lines = "allow"
+missing_errors_doc = "allow"
+missing_panics_doc = "allow"
+default_trait_access = "allow"
+enum_glob_use = "allow"
+option_if_let_else = "allow"
+blocks_in_conditions = "allow"
