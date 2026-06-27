@@ -1,0 +1,15 @@
+[package]
+name = "base64"
+version = "1.0.0"
+edition = "2021"
+description = "Encode and decode base64 data - Windows port of GNU base64"
+
+[[bin]]
+name = "base64"
+path = "src/main.rs"
+
+[profile.release]
+opt-level     = 3
+lto           = true
+strip         = true
+codegen-units = 1

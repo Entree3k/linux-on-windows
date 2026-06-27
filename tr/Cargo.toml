@@ -1,0 +1,15 @@
+[package]
+name = "tr"
+version = "1.0.0"
+edition = "2021"
+description = "Translate, squeeze, and delete characters from stdin"
+
+[[bin]]
+name = "tr"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true
+codegen-units = 1
